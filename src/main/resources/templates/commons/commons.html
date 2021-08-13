@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Start header -->
+<header class="top-navbar" th:fragment="topbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li th:class="${active=='index.html'? 'nav-item active':'nav-item'}"><a class="nav-link" th:href="@{/}">首页</a></li>
+                    <li th:class="${active=='user.html'? 'nav-item active dropdown':'nav-item dropdown'}">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">登录入口</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" th:href="@{/adminLogin}">管理员登录</a>
+                            <a class="dropdown-item" th:href="@{/waiterLogin}">服务员登录</a>
+                            <a class="dropdown-item" th:href="@{/userLogin}">用户登录</a>
+                        </div>
+                    </li>
+                    <li th:class="${active=='userQueue.html'? 'nav-item active':'nav-item'}">
+                        <a class="nav-link" th:href="@{/userQueue}">我的排队</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End header -->
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb" th:fragment="pages">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 th:text="${text}"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start Contact info -->
+<div class="contact-imfo-box" th:fragment="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>电话</h4>
+                    <p class="lead">
+                        +01 123-456-4590
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>邮箱</h4>
+                    <p class="lead">
+                        zyf17803843994@163.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>地址</h4>
+                    <p class="lead">
+                        世界的某个角落
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact info -->
+
+<!-- Start Footer -->
+<footer class="footer-area bg-f" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <h3>关于我们</h3>
+                <p>美食和时光都是不可辜负的存在，如果你遇到任何问题，你可以打电话联系我们，我们随时都在。</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3>营业时间</h3>
+                <p><span class="text-color">Monday: </span>关门</p>
+                <p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
+                <p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
+                <p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3>相关信息</h3>
+                <p class="lead">世界的某个角落</p>
+                <p class="lead"><a href="#">178 0384 3994</a></p>
+                <p><a href="#"> zyf17803843994@163.com</a></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3>订阅</h3>
+                <div class="subscribe_form">
+                    <form class="subscribe_form">
+                        <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
+                        <button type="submit" class="submit">订购预约</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <ul class="list-inline f-social">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="company-name">Copyright &copy; 2021.赵玙璠 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+
+</html>

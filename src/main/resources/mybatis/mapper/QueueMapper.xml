@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.mapper.QueueMapper">
+
+    <select id="queryQueueList" resultType="Queue">
+        select * from queue
+    </select>
+
+    <select id="queryQueueById" parameterType="int" resultType="Queue">
+        select * from queue where id = #{id}
+    </select>
+
+    <select id="queryQueueByUid" parameterType="int" resultType="Queue">
+        select * from queue where uid = #{uid}
+    </select>
+
+    <insert id="addQueue" parameterType="Queue">
+        <!-- resultType：设置返回的id的类型 -->
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER"
+                   resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        queue (uid,num)
+        values (#{uid},#{num})
+    </insert>
+
+    <delete id="deleteQueue" parameterType="int">
+        delete from queue where id = #{id}
+    </delete>
+
+    <delete id="deleteQueueByUid" parameterType="int">
+        delete from queue where uid = #{uid}
+    </delete>
+
+
+
+</mapper>

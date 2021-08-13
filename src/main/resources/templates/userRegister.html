@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><!-- Basic -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Yamifood Restaurant</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<!-- Start header -->
+<div th:replace="~{commons/commons::topbar(active='user.html')}"></div>
+<!-- End header -->
+
+<!-- Start All Pages -->
+<div th:replace="~{commons/commons::pages(text='食客注册')}"></div>
+<!-- End All Pages -->
+
+<!-- Start Contact -->
+<!--<div class="map-full"></div>-->
+<div class="contact-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>食客注册</h2>
+                    <p>Once you're registered   you can make reservations</p>
+                    <p style="color: red" th:if="${not #strings.isEmpty(session.get('same'))}" th:text="${session.get('same')}"></p>
+                    <a th:href="@{/userLogin}">登录</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form th:action="@{user/regis}" method="post">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="*用户名" required data-error="Please enter your name">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="1" checked>
+                                    <label class="form-check-label">男</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="0">
+                                    <label class="form-check-label">女</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" name="birth" placeholder="yyyy-MM-dd" class="form-control" required data-error="Please enter Date">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" placeholder="*邮箱" id="email" class="form-control" name="email"
+                                       required data-error="Please enter your email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" placeholder="*密码" class="form-control" name="password"
+                                       minlength="6" maxlength="16"
+                                       required data-error="Please enter your password">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="submit-button text-center">
+                                <button class="btn btn-common" type="submit">注册</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact -->
+
+<!-- Start Contact info -->
+<div th:replace="~{commons/commons::info}"></div>
+<!-- End Contact info -->
+
+<!-- Start Footer -->
+<div th:replace="~{commons/commons::footer}"></div>
+<!-- End Footer -->
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<!-- ALL JS FILES -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- ALL PLUGINS -->
+
+<script src="js/jquery.superslides.min.js"></script>
+<script src="js/images-loded.min.js"></script>
+<script src="js/isotope.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script src="js/jquery.mapify.js"></script>
+<script src="js/form-validator.min.js"></script>
+<script src="js/contact-form-script.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    $('.map-full').mapify({
+        points: [
+            {
+                lat: 40.7143528,
+                lng: -74.0059731,
+                marker: true,
+                title: 'Marker title',
+                infoWindow: 'Yamifood Restaurant'
+            }
+        ]
+    });
+</script>
+</body>
+</html>

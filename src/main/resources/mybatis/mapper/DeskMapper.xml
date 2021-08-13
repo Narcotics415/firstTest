@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.mapper.DeskMapper">
+
+    <select id="queryDeskList" resultType="Desk">
+        select * from desk
+    </select>
+
+    <select id="queryDeskById" parameterType="int" resultType="Desk">
+        select * from desk where id = #{id}
+    </select>
+
+    <select id="queryDeskByUid" parameterType="int" resultType="Desk">
+        select * from desk where uid = #{uid}
+    </select>
+
+    <insert id="addDesk" parameterType="Desk">
+        <!-- resultType：设置返回的id的类型 -->
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER"
+                   resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        desk (capacity,flag,uid)
+        values (#{capacity},#{flag},#{uid})
+    </insert>
+
+    <update id="updateDesk" parameterType="Desk">
+        update desk
+        set capacity=#{capacity},flag=#{flag},uid=#{uid}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDesk" parameterType="int">
+        delete from desk where id = #{id}
+    </delete>
+
+    <select id="queryFreeDeskList" resultType="Desk">
+        select * from desk
+        where flag = 0
+        order by capacity
+    </select>
+
+    <select id="queryFullDeskList" resultType="Desk">
+        select * from desk
+        where flag = 1
+    </select>
+
+
+
+</mapper>

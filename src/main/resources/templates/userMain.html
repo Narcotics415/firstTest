@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><!-- Basic -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Yamifood Restaurant</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<!-- Start header -->
+<div th:replace="~{commons/commons::topbar(active='user.html')}"></div>
+<!-- End header -->
+
+<!-- Start All Pages -->
+<div th:replace="~{commons/commons::pages(text='食客排队')}"></div>
+<!-- End All Pages -->
+
+<!-- Start Contact -->
+<!--<div class="map-full"></div>-->
+<div class="contact-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>食客排队</h2>
+                    <p>Once you're queued   you can eat foods</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form th:action="@{user/queue}" method="post">
+                    <input type="hidden" name="uid" th:value="${session.get('uid')}">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="number" class="form-control" max="10" min="1"
+                                       name="num" placeholder="*用餐总人数"
+                                       required data-error="Please enter total number of people">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="submit-button text-center">
+                                <button class="btn btn-common" type="submit">排队</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact -->
+
+<!-- Start Contact info -->
+<div th:replace="~{commons/commons::info}"></div>
+<!-- End Contact info -->
+
+<!-- Start Footer -->
+<div th:replace="~{commons/commons::footer}"></div>
+<!-- End Footer -->
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<!-- ALL JS FILES -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- ALL PLUGINS -->
+
+<script src="js/jquery.superslides.min.js"></script>
+<script src="js/images-loded.min.js"></script>
+<script src="js/isotope.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script src="js/jquery.mapify.js"></script>
+<script src="js/form-validator.min.js"></script>
+<script src="js/contact-form-script.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    $('.map-full').mapify({
+        points: [
+            {
+                lat: 40.7143528,
+                lng: -74.0059731,
+                marker: true,
+                title: 'Marker title',
+                infoWindow: 'Yamifood Restaurant'
+            }
+        ]
+    });
+</script>
+</body>
+</html>

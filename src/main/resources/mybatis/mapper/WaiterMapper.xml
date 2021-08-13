@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.mapper.WaiterMapper">
+
+    <select id="queryWaiterList" resultType="Waiter">
+        select * from waiter
+    </select>
+
+    <select id="queryWaiterById" parameterType="int" resultType="Waiter">
+        select * from waiter where id = #{id}
+    </select>
+
+    <insert id="addWaiter" parameterType="Waiter">
+        <!-- resultType：设置返回的id的类型 -->
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER"
+                   resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        waiter (name,password)
+        values (#{name},#{password})
+    </insert>
+
+    <update id="updateWaiter" parameterType="Waiter">
+        update waiter
+        set name=#{name},password=#{password}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWaiter" parameterType="int">
+        delete from waiter where id = #{id}
+    </delete>
+
+    <select id="queryWaiterByName" parameterType="String" resultType="Waiter">
+        select * from waiter where name = #{name}
+    </select>
+
+
+</mapper>
